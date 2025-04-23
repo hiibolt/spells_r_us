@@ -1,3 +1,4 @@
+-- Insert 20 products into the Product table
 INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
 ('Anti-Gravity Spell', 100, 'Defy the laws of physics and float above your enemies.', 'https://github.com/user-attachments/assets/d15062ac-561a-412f-85f2-24d2ddd600ce', 49.99);
 
@@ -57,3 +58,51 @@ INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
 
 INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
 ('Time Dilation Spell', 95, 'Experience moments in slow motion to act with precision.', 'https://github.com/user-attachments/assets/071263e2-a459-4c26-be17-4a549e2be29d', 54.99);
+
+-- Insert 5 users into the User table
+INSERT INTO User (Email, Password, IsEmployee) VALUES
+('shaivil@niu.edu', 'password123', True);
+
+INSERT INTO User (Email, Password, IsEmployee) VALUES
+('alex@niu.edu', 'password123', TRUE);
+
+INSERT INTO User (Email, Password, IsEmployee) VALUES
+('john@niu.edu', 'password123', TRUE);
+
+INSERT INTO User (Email, Password, IsEmployee) VALUES
+('antonio', 'password123', TRUE);
+
+INSERT INTO User (Email, Password, IsEmployee) VALUES
+('sarahjones123@niu.edu', 'VerySecurePassword!!!', FALSE);
+
+-- Insert atleast 1 order per user into the Order table
+INSERT INTO `Order` (UserId, Status, Notes, TotalPrice) VALUES
+(1, 'Shipped', 'Deliver to the office.', 99.98);
+
+INSERT INTO `Order` (UserId, Status, Notes, TotalPrice) VALUES
+(2, 'Processing', 'Handle with care.', 59.99);
+
+INSERT INTO `Order` (UserId, Status, Notes, TotalPrice) VALUES
+(3, 'Delivered', 'Leave at the front door.', 164.97);
+
+INSERT INTO `Order` (UserId, Status, Notes, TotalPrice) VALUES
+(4, 'Pending', 'Awaiting confirmation.', 29.99);
+
+INSERT INTO `Order` (UserId, Status, Notes, TotalPrice) VALUES
+(5, 'Pending', 'Awaiting confirmation.', 399.98);
+
+-- Inser the products into the UserPlacesOrder table
+INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES
+(1, 1, 2);
+
+INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES
+(2, 2, 1);
+
+INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES
+(3, 3, 3);
+
+INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES
+(4, 4, 1);
+
+INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES
+(5, 5, 2);
