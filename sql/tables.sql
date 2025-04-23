@@ -18,6 +18,7 @@ CREATE TABLE Product (
     Name VARCHAR(255) NOT NULL,
     Inventory INT NOT NULL, 
     Description VARCHAR(255) NOT NULL,
+    ImageUrl VARCHAR(255) NOT NULL,
     Price DECIMAL(10, 2) NOT NULL
 );
 
