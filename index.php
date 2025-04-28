@@ -3,7 +3,8 @@
 <html>
     <head>
         <title>Home</title>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/header.css">
     </head>
     <body>
         <?php
@@ -12,7 +13,7 @@
         ?>
         <h1>Welcome</h1>
 
-        <div class="product-container">
+        <div class="product-grid">
             <?php
                 $sql = 'SELECT * FROM Product';
                 $prepared = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -22,17 +23,15 @@
                     $products = $prepared->fetchAll(PDO::FETCH_ASSOC);
                     foreach ($products as $product) {
                         echo "<div class='product'>";
-                        echo "<h2>{$product['Name']}</h2>";
-                        echo "<p>Price: \${$product['Price']}</p>";
-                        echo "<p>Description: {$product['Description']}</p>";
-                        echo "<p>Inventory: {$product['Inventory']}</p>";
-                        echo "<img src='{$product['ImageUrl']}' alt='{$product['Name']}' width=103px height=154px/>";
-                        echo "<form method='POST' action='add_to_cart.php'>";
-                        echo "<input type='hidden' name='product_id' value='{$product['ProductID']}' />";
-                        echo "<input type='number' name='quantity' value='1' min='1' max='{$product['Inventory']}' />";
-                        echo "<input type='submit' value='Add to Cart' />";
-                        echo "</form>";
+                            echo "<img src='{$product['ImageUrl']}' alt='{$product['Name']}' width=103px height=154px/>";
+                            echo "<div class='product-details'>";
+                                echo "<div class='product-title'>" . htmlspecialchars($product['Name']) . "</div>";
+                                echo "<div class='product-price'>$" . htmlspecialchars($product['Price']) . "</div>";
+                                echo "<div class='product-description'>" . htmlspecialchars($product['Description']) . "</div>";
+                                echo "<button onclick=\"location.href='product.php?id=" . htmlspecialchars($product['ProductID']) . "'\">Add to Cart</button>";
+                            echo "</div>";
                         echo "</div>";
+                        
                     }
                 } else {
                     echo "<p>Failed to retrieve products.</p>";
