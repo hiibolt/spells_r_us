@@ -8,21 +8,17 @@ function isEmployee() {
     return isset($_SESSION['IsEmployee']) && $_SESSION['IsEmployee'] == 1;
 }
 
-$cartItemCount = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+$userId = $_SESSION['userId'];
+
+$stmt = $pdo->prepare("SELECT COUNT(*) AS CartProductCount FROM ProductInUserCart WHERE UserId = ?");
+$stmt->execute([$userId]);
+$cartItemCount = $stmt->fetchColumn();
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ToDo! Website</title>
-    <link rel="stylesheet" href="styles/header.css">
-</head>
-<body>
 <header class="header">
     <div class="logo">
         <a href="index.php">
-            <img src="https://github.com/user-attachments/assets/f022246c-f63f-4733-afb5-b8f2889a3ceb" style="height:50px;" alt="Logo">
+            <img src="https://github.com/user-attachments/assets/1ee556c6-eb4f-46d2-9193-1fa30767753e" style="height:50px;" alt="Logo">
         </a>
     </div>
 
