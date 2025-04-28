@@ -22,7 +22,6 @@ $stmt->execute([':userId' => $userId]);
 $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-
 if(empty($cartItems)) 
 {
     echo"<p>Your cart is empty. Please add items before checking out </p>";
