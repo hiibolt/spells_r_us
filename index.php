@@ -26,6 +26,10 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart']) && is
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $success = $stmt->execute(array(':userId' => $userId, ':productId' => $productId));
     }
+
+    // Redirect to avoid form resubmission
+    header("Location: index.php?added=1");
+    exit;
 }
 
 $sql = 'SELECT * FROM Product';
