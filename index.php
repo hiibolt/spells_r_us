@@ -72,10 +72,14 @@ if ( $success ) {
                         <div class="product-price">$<?= number_format($product['Price'], 2) ?></div>
                         <div class="product-description"><?= htmlspecialchars($product['Description']) ?></div>
 
-                        <form method="POST">
-                            <input type="hidden" name="product_id" value="<?= $product['ProductId'] ?>">
-                            <button type="submit" name="add_to_cart">Add to Cart</button>
-                        </form>
+                        <?php if ( $product['Inventory'] <= 0 ): ?>
+                            <div class="product-out-of-stock">Out of Stock</div>
+                        <?php else: ?>
+                            <form method="POST">
+                                <input type="hidden" name="product_id" value="<?= $product['ProductId'] ?>">
+                                <button type="submit" name="add_to_cart">Add to Cart</button>
+                            </form>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>
