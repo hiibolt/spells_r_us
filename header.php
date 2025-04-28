@@ -6,7 +6,7 @@ function isLoggedIn() {
 }
 
 function isEmployee() {
-    return isset($_SESSION['IsEmployee']) && $_SESSION['IsEmployee'] == 1;
+    return isset($_SESSION['isEmployee']) && $_SESSION['isEmployee'] == 1;
 }
 
 $userId = $_SESSION['userId'];
@@ -24,26 +24,26 @@ $cartItemCount = $stmt->fetchColumn();
     </div>
 
     <nav class="nav">
-        <ul class="nav-links">
-            <?php if (isLoggedIn()): ?>
-                <?php if (isEmployee()): ?>
-                    <li><a href="admin_products.php">Admin Panel</a></li>
-                <?php endif; ?>
+		<ul class="nav-links">
+			<?php if (isLoggedIn()): ?>
+				<?php if (isEmployee()): ?>
+					<li><a href="admin_products.php" class="button-link">Admin Panel</a></li>
+				<?php endif; ?>
 
-                <li><a href="profile.php">Profile</a></li>
-                <li><a href="logout.php">Logout</a></li>
+				<li><a href="profile.php" class="button-link">Profile</a></li>
+				<li><a href="logout.php" class="button-link">Logout</a></li>
 
-            <?php else: ?>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="signup.php">Sign Up</a></li>
-            <?php endif; ?>
+			<?php else: ?>
+				<li><a href="login.php" class="button-link">Login</a></li>
+				<li><a href="signup.php" class="button-link">Sign Up</a></li>
+			<?php endif; ?>
 
-            <li>
-                <a href="cart.php">
-                    Cart (<?php echo $cartItemCount; ?>)
-                </a>
-            </li>
-        </ul>
+			<li>
+				<a href="cart.php" class="button-link">
+					Cart (<?php echo $cartItemCount; ?>)
+				</a>
+			</li>
+		</ul>
     </nav>
 </header>
 <hr>

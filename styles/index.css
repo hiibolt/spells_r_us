@@ -1,4 +1,3 @@
-/* Base Styling */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -6,9 +5,8 @@ body {
     color: #333;
 }
 
-/* Header */
 header {
-    background-color: #0054a6; /* Toys-R-Us blue */
+    background-color: #0054a6;
     color: white;
     padding: 1rem 2rem;
     text-align: center;
@@ -16,7 +14,6 @@ header {
     font-weight: bold;
 }
 
-/* Product Grid Container */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -26,7 +23,6 @@ header {
     margin: 0 auto;
 }
 
-/* Product Card */
 .product {
     text-align: center;
     background-color: white;
@@ -41,13 +37,11 @@ header {
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
-/* Product Image */
 .product img {
     width: 103px;
     height: 154px;
 }
 
-/* Product Details */
 .product-details {
     text-align: left;
     padding: 1rem;
@@ -61,7 +55,7 @@ header {
 
 .product-price {
     font-size: 1rem;
-    color: #ed1c24; /* Toys-R-Us red */
+    color: #ed1c24;
     font-weight: bold;
 }
 
@@ -73,7 +67,7 @@ header {
 
 /* Buy Button */
 .product button {
-    background-color: #fff200; /* Toys-R-Us yellow */
+    background-color: #fff648;
     color: #000;
     border: none;
     padding: 0.6rem 1rem;
@@ -84,6 +78,6 @@ header {
 }
 
 .product button:hover {
-    background-color: #00a651; /* Toys-R-Us green */
+    background-color: #00a651;
     color: white;
 }
