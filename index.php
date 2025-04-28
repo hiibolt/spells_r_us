@@ -7,14 +7,36 @@
         <link rel="stylesheet" href="styles/header.css">
     </head>
     <body>
+
         <?php
             require 'header.php';
             require 'db.php';
-        ?>
-        <h1>Welcome</h1>
 
+            $userId = $_SESSION['user'] ?? null;
+
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart']) && isset($_POST['product_id']) && $userId) {
+                $productId = (int)$_POST['product_id'];
+            
+                // Check if product already in cart
+                $stmt = $pdo->prepare("SELECT Quantity FROM ProductInUserCart WHERE UserId = ? AND ProductId = ?");
+                $stmt->execute([$userId, $productId]);
+                $existing = $stmt->fetch();
+            
+                if ($existing) {
+                    // Update quantity
+                    $stmt = $pdo->prepare("UPDATE ProductInUserCart SET Quantity = Quantity + 1 WHERE UserId = ? AND ProductId = ?");
+                    $stmt->execute([$userId, $productId]);
+                } else {
+                    // Insert new row
+                    $stmt = $pdo->prepare("INSERT INTO ProductInUserCart (UserId, ProductId, Quantity) VALUES (?, ?, 1)");
+                    $stmt->execute([$userId, $productId]);
+                }
+                exit;
+            }
+        ?>
         <div class="product-grid">
             <?php
+
                 $sql = 'SELECT * FROM Product';
                 $prepared = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
                 $success = $prepared->execute();
@@ -28,23 +50,17 @@
                                 echo "<div class='product-title'>" . htmlspecialchars($product['Name']) . "</div>";
                                 echo "<div class='product-price'>$" . htmlspecialchars($product['Price']) . "</div>";
                                 echo "<div class='product-description'>" . htmlspecialchars($product['Description']) . "</div>";
-                                echo "<button onclick=\"location.href='product.php?id=" . htmlspecialchars($product['ProductID']) . "'\">Add to Cart</button>";
+                                echo "<form method='POST'>";
+                                    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($product['ProductID']) . "'>";
+                                    echo "<button type='submit' name='add_to_cart'>Add to Cart</button>";
+                                echo "</form>";
                             echo "</div>";
                         echo "</div>";
-                        
                     }
                 } else {
                     echo "<p>Failed to retrieve products.</p>";
                 }
             ?>
         </div>
-
-        <?php if (isset($_SESSION['user'])): ?>
-            <p>Hello, <?= htmlspecialchars($_SESSION['user']) ?>!</p>
-            <a href="logout.php">Logout</a>
-        <?php else: ?>
-            <p>You are not logged in.</p>
-            <a href="login.php">Login</a>
-        <?php endif; ?>
     </body>
 </html>
