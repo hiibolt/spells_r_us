@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user) {
         $_SESSION['user'] = $user['Email'];
+        $_SESSION['isEmployee'] = $user['IsEmployee'];
         header('Location: index.php');
         exit;
     } else {

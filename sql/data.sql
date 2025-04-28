@@ -39,7 +39,7 @@ INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
 ('Sleep Spell', 200, 'Fall asleep quickly and deeply for the ultimate rest.', 'https://github.com/user-attachments/assets/c5672280-881b-429f-b716-403929720202', 19.99);
 
 INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
-('Luck Shift Spell', 130, 'Subtly adjust odds in your favor in everyday life.', 'hhttps://github.com/user-attachments/assets/07cd3226-7e08-4859-904c-e7ca1e6eb67c', 39.99);
+('Luck Shift Spell', 130, 'Subtly adjust odds in your favor in everyday life.', 'https://github.com/user-attachments/assets/07cd3226-7e08-4859-904c-e7ca1e6eb67c', 39.99);
 
 INSERT INTO Product (Name, Inventory, Description, ImageUrl, Price) VALUES
 ('Pain Dissolve Spell', 160, 'Melt away physical or emotional discomfort with ease.', 'https://github.com/user-attachments/assets/c560d492-3203-47a1-885a-913fdebd7eaf', 34.99);
