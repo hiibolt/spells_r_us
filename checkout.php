@@ -1,7 +1,29 @@
-
 <?php session_start(); 
+require 'db.php';
 
-if(empty($_SESSION['cart'])) 
+
+// Check if user is logged in
+$userId = $_SESSION['userId'] ?? null;
+
+if (!$userId) {
+    echo "<p>Please log in to checkout.</p>";
+    exit;
+}
+
+// Get cart items for this user
+$sql = '
+SELECT p.Name, p.Price, p.ImageUrl, puc.Quantity
+FROM ProductInUserCart puc
+JOIN Product p ON puc.ProductId = p.ProductId
+WHERE puc.UserId = :userId
+';
+$stmt = $pdo->prepare($sql);
+$stmt->execute([':userId' => $userId]);
+$cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+if(empty($cartItems)) 
 {
     echo"<p>Your cart is empty. Please add items before checking out </p>";
     exit();
@@ -9,15 +31,15 @@ if(empty($_SESSION['cart']))
 
 //calculating cart total 
     $total = 0; 
-    foreach($_SESSION['cart'] as $item){
-        $total+=$item['price']; 
+    foreach($cartItems as $item){
+        $total+=$item['price'] * $item['Quantity']; 
     }
 
 
 // valid forms 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-        $shippingName = $_POST['shipping_name'] ?? '';
+        $shippingName = $_POST['shippingName'] ?? '';
         $shippingAddress = $_POST['shippingAddress'] ?? '';
         $shippingCity = $_POST['shippingCity'] ?? '';
         $shippingState = $_POST['shippingState'] ?? '';
@@ -31,7 +53,7 @@ if(empty($_SESSION['cart']))
            || empty($shippingState) || empty($shippingZip) || empty($cardNum) || empty($cardName)
            || empty($cardExp) || empty($cardCvv)) 
         {
-            echo "<p style='color: red;' Fill out all required fields. </p>"; 
+            echo "<p style='color: red;'>Fill out all required fields. </p>"; 
         }
         else
         {
@@ -48,6 +70,11 @@ if(empty($_SESSION['cart']))
 
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles/checkout.css">
+</head>
 <body> 
 
     <h1>Checkout</h1>
@@ -60,10 +87,10 @@ if(empty($_SESSION['cart']))
     <?php if(!empty($_SESSION['cart'])): ?> 
 
         <ul>
-        <?php foreach($_SESSION['cart'] as $item): ?>    
+        <?php foreach($cartItems as $item): ?>    
             <li>
                 <?php echo htmlspecialchars($item['name']); ?>
-                - $<?echo number_format($item['price'], 2); ?>
+                - $<?php echo number_format($item['price'], 2); ?>
             </li>
             <?php endforeach; ?>
         </ul>
