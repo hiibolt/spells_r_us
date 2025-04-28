@@ -205,3 +205,17 @@ header {
 .continue-checkout-button:hover {
     background-color: #007a3d;
 }
+
+main h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #0054a6;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+main {
+    padding-bottom: 10rem;
+}
