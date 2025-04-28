@@ -4,6 +4,9 @@
 <head><title>Home</title></head>
 <body>
     <h1>Welcome</h1>
+	<?php
+		require 'header.php';
+	?>
     <?php if (isset($_SESSION['user'])): ?>
         <p>Hello, <?= htmlspecialchars($_SESSION['user']) ?>!</p>
         <a href="logout.php">Logout</a>
