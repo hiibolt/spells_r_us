@@ -14,7 +14,7 @@ header {
     font-weight: bold;
 }
 
-.login-container {
+.signup-container {
     width: 300px;
     margin: 100px auto;
     padding: 20px;
@@ -24,29 +24,29 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-container h1 {
+.signup-container h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.login-form {
+.signup-form {
     display: flex;
     flex-direction: column;
 }
 
-.login-form label {
+.signup-form label {
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.login-form input {
+.signup-form input {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-.login-form button {
+.signup-form button {
     background-color: #adda8f;
     color: white;
     border: none;
@@ -56,12 +56,12 @@ header {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-.login-form button:hover {
+.signup-form button:hover {
     background-color: #038b2e;
     transform: translateY(-2px);
 }
 
-.login-alert {
+.signup-alert {
     color: red;
     text-align: center;
     margin-top: 10px;
