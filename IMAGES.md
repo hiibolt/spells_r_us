@@ -18,3 +18,4 @@
 ![Clarity Spell](https://github.com/user-attachments/assets/702e7dd2-1e0e-45c0-ab60-d86232a5ae4f)
 ![Habit Break Spell](https://github.com/user-attachments/assets/af6f59ff-8586-42cb-8d3d-b062e848f537)
 ![Time Dilation Spell](https://github.com/user-attachments/assets/071263e2-a459-4c26-be17-4a549e2be29d)
+![spells-r-us-logo-cropped](https://github.com/user-attachments/assets/f022246c-f63f-4733-afb5-b8f2889a3ceb)
