@@ -11,7 +11,7 @@ function isEmployee() {
 
 $userId = $_SESSION['userId'];
 
-$stmt = $pdo->prepare("SELECT COUNT(*) AS CartProductCount FROM ProductInUserCart WHERE UserId = ?");
+$stmt = $pdo->prepare("SELECT COALESCE(SUM(Quantity), 0) AS CartItemCount FROM ProductInUserCart WHERE UserId = ?;");
 $stmt->execute([$userId]);
 $cartItemCount = $stmt->fetchColumn();
 
@@ -27,7 +27,7 @@ $cartItemCount = $stmt->fetchColumn();
         <ul class="nav-links">
             <?php if (isLoggedIn()): ?>
                 <?php if (isEmployee()): ?>
-                    <li><a href="admin_products.php">Admin Products</a></li>
+                    <li><a href="admin_products.php">Admin Panel</a></li>
                 <?php endif; ?>
 
                 <li><a href="profile.php">Profile</a></li>

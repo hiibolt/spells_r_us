@@ -5,17 +5,29 @@
     align-items: center;
     padding: 10px 30px;
     background-color: #f8f8f8;
+    height: 70px;
+    vertical-align: middle;
+}
+
+/* Logo container */
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 /* Logo stays on the left */
 .logo img {
     height: 50px;
+    object-fit: contain;
+    vertical-align: middle;
 }
 
 /* Nav container */
 .nav {
-    flex-grow: 1;
+    display: flex;
     text-align: right;
+    align-items: center;
 }
 
 /* Nav links styling */
@@ -31,8 +43,10 @@
     text-decoration: none;
     color: #333;
     font-weight: bold;
+    vertical-align: middle;
+    font-size: 24px;
 }
 
 .nav-links li a:hover {
-    color: #007BFF;
+    color: #6200ff;
 }
