@@ -1,4 +1,5 @@
 <?php
+require 'db.php';
 
 function isLoggedIn() {
     return isset($_SESSION['user']);
