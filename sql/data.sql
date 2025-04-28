@@ -70,7 +70,7 @@ INSERT INTO User (Email, Password, IsEmployee) VALUES
 ('john@niu.edu', 'password123', TRUE);
 
 INSERT INTO User (Email, Password, IsEmployee) VALUES
-('antonio', 'password123', TRUE);
+('antonio@niu.edu', 'password123', TRUE);
 
 INSERT INTO User (Email, Password, IsEmployee) VALUES
 ('sarahjones123@niu.edu', 'VerySecurePassword!!!', FALSE);
