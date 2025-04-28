@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
 }
-img {
+.order-img {
     width: calc(103px/2.5);
     height: calc(154px/2.5);
 }

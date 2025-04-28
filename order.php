@@ -70,7 +70,7 @@
                             <div class="product-item">
                                 <table class="product-table">
                                     <td>
-                                        <img src="<?php echo $product['ImageUrl']; ?>" alt="<?php echo $product['ProductName']; ?>" class="product-image">
+                                        <img src="<?php echo $product['ImageUrl']; ?>" alt="<?php echo $product['ProductName']; ?>" class="order-img">
                                     </td>
                                     <td>
                                         <h4><?php echo $product['Name']; ?></h4>
