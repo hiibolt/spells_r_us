@@ -1,0 +1,86 @@
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+.profile-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+.order-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.order {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+}
+
+.order:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.order-header h3 {
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.status {
+    font-weight: bold;
+    color: #28a745;
+}
+.status.pending {
+    color: #ffc107;
+}
+.status.cancelled {
+    color: #dc3545;
+}
+
+.notes, .total-price {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+}
+.total-price {
+    font-weight: bold;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .order {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .order {
+        width: 100%;
+    }
+}
