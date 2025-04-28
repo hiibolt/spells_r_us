@@ -55,17 +55,18 @@ h1 {
     transform: translateY(-5px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
-
 .order-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
-
 .order-header h3 {
     font-size: 1.2rem;
     color: #444;
+}
+.total-container {
+    text-align: center;
 }
 
 .status {
