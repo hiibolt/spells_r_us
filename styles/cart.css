@@ -107,6 +107,7 @@ header {
     background-color: #ed1c24;
     color: white;
     border: none;
+    text-decoration: none;
     padding: 0.6rem 1.5rem;
     font-size: 1rem;
     font-weight: bold;
@@ -201,6 +202,18 @@ header {
     transition: background-color 0.2s ease;
     display: inline-block;
 }
+.outstanding-orders-button {
+    background-color: #00a651;
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
 
 .continue-checkout-button:hover {
     background-color: #007a3d;
@@ -218,4 +231,15 @@ main h1 {
 
 main {
     padding-bottom: 10rem;
+}
+
+
+.employee-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-bottom: 3rem;
 }

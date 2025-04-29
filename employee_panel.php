@@ -6,19 +6,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee Panel</title>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/employee_panel.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Employee Panel</title>
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/cart.css">
+    </head>
+    <body>
+        <div class="employee-container">
+            <h1 style="text-align:center;padding-bottom:1.5rem;">Employee Panel</h1>
 
-    <h1>Employee Panel</h1>
-
-    <a href="outstanding_orders.php" class="button">Outstanding Orders</a>
-    <a href="inventory_list.php" class="button">Inventory List</a>
-    <a href="order_fulfillment.php" class="button">Order Fulfillment</a>
-
-</body>
+            <div class="continue-shopping">
+                <a href="inventory.php" class="clear-cart-button">Inventory List</a>
+            </div>
+            <div class="continue-shopping">
+                <a href="order_fulfillment.php" class="continue-shopping-button">Order Fulfillment</a>
+            </div>
+            <div class="continue-shopping">
+                <a href="outstanding_orders.php" class="outstanding-orders-button">Outstanding Orders</a>
+            </div>
+        </div>
+    </body>
 </html>

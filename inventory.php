@@ -62,11 +62,6 @@
         <?php
             require 'header.php';
         ?>
-        <?php if ( isset($_GET['added']) ): ?>
-            <div style="background-color: #d4edda; color: #155724; padding: 1rem; text-align: center;">
-                ✅ Product added to cart!
-            </div>
-        <?php endif; ?>
         
         <div class="product-grid">
             <?php foreach ( $products as $product ): ?>
