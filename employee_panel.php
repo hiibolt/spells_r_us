@@ -22,9 +22,6 @@
             <div class="continue-shopping">
                 <a href="order_fulfillment.php" class="continue-shopping-button">Order Fulfillment</a>
             </div>
-            <div class="continue-shopping">
-                <a href="outstanding_orders.php" class="outstanding-orders-button">Outstanding Orders</a>
-            </div>
         </div>
     </body>
 </html>

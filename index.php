@@ -6,6 +6,7 @@ require_once 'db.php';
 
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart']) && isset($_POST['product_id']) && $userId ) {
     $productId = $_POST['product_id'];
+    $toAdd = $_POST['quantity'] ?? 1;
 
     // Check if product already in cart
     $sql = 'SELECT Quantity FROM ProductInUserCart WHERE UserId = :userId AND ProductId = :productId';
@@ -16,15 +17,15 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_cart']) && is
     if ( $existing ) {
         #echo "Product already in cart. Quantity: " . $existing['Quantity'] . ". Product ID: " . $productId;
         
-        $sql = 'UPDATE ProductInUserCart SET Quantity = Quantity + 1 WHERE UserId = :userId AND ProductId = :productId';
+        $sql = 'UPDATE ProductInUserCart SET Quantity = Quantity + :toAdd WHERE UserId = :userId AND ProductId = :productId';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $stmt->execute(array(':userId' => $userId, ':productId' => $productId));
+        $stmt->execute(array(':userId' => $userId, ':productId' => $productId, ':toAdd' => $toAdd));
     } else {
         #echo "Product not in cart. Adding to cart.";
         
-        $sql = 'INSERT INTO ProductInUserCart (UserId, ProductId, Quantity) VALUES (:userId, :productId, 1)';
+        $sql = 'INSERT INTO ProductInUserCart (UserId, ProductId, Quantity) VALUES (:userId, :productId, :toAdd)';
         $stmt = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-        $success = $stmt->execute(array(':userId' => $userId, ':productId' => $productId));
+        $success = $stmt->execute(array(':userId' => $userId, ':productId' => $productId, ':toAdd' => $toAdd));
     }
 
     // Redirect to avoid form resubmission
@@ -70,9 +71,10 @@ if ( $success ) {
                         <div class="product-description"><?= htmlspecialchars($product['Description']) ?></div>
 
                         <?php if ( $product['Inventory'] <= 0 ): ?>
-                            <div class="product-out-of-stock">Out of Stock</div>
+                            <div class="product-out-of-stock" style="text-align:center;">Out of Stock</div>
                         <?php elseif ( $userId ): ?>
-                            <form method="POST">
+                            <form method="POST" style="display:flex;align-items:center;justify-content:space-between;">
+                                <input type="number" name="quantity" min="1" value="1" max="<?= $product['Inventory'] ?>" class="quantity-input">
                                 <input type="hidden" name="product_id" value="<?= $product['ProductId'] ?>">
                                 <button type="submit" name="add_to_cart">Add to Cart</button>
                             </form>
