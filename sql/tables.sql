@@ -25,9 +25,11 @@ CREATE TABLE Product (
 CREATE TABLE `Order` (
     OrderId INT PRIMARY KEY AUTO_INCREMENT,
     UserId INT NOT NULL,
-    Status VARCHAR(50) NOT NULL,
+    Status VARCHAR(50) NOT NULL DEFAULT 'Processing',
     Notes VARCHAR(255) NOT NULL,
     TotalPrice DECIMAL(10, 2) NOT NULL,
+    ShippedAt DATETIME DEFUALT NULL,
+    ShippingAddress VARCHAR(512) NOT NULL,
     FOREIGN KEY (UserId) REFERENCES `User`(UserId)
 );
 
