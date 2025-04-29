@@ -27,7 +27,7 @@ $cartItemCount = $stmt->fetchColumn();
 		<ul class="nav-links">
 			<?php if (isLoggedIn()): ?>
 				<?php if (isEmployee()): ?>
-					<li><a href="admin_products.php" class="button-link">Admin Panel</a></li>
+					<li><a href="employee_panel.php" class="button-link">Employee Panel</a></li>
 				<?php endif; ?>
 
 				<li><a href="profile.php" class="button-link">Profile</a></li>
