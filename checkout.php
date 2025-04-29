@@ -106,11 +106,14 @@ if(empty($cartItems))
             $sql = 'DELETE FROM ProductInUserCart WHERE UserId = :userId';
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':userId' => $userId]);
+
+            # Add code to insert ProductPartOfOrder
+
         
             echo '<div class="thank-you-container">
             <h2>Thank you for shopping with Spells R Us!</h2>
             <p> Your order has been placed and will be shipped to: </p>
-            <p>' . htmlspecialchars($shippingAddress) . '</p>
+            <p>' . htmlspecialchars($fullShippingAddress) . '</p>
             <p>Total Amount Charged: <strong>$' . number_format($total,2) . '</strong></p>
             <a class="continue-shopping-btn" href="index.php"> Continue Shopping</a>
             </div>
@@ -174,8 +177,5 @@ if(empty($cartItems))
     <input type="submit" value="Place Order">
     </form>
     </body>
-    <?php
-        require 'footer.php';
-    ?>
 </html>
 
