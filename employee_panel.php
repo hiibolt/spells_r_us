@@ -19,7 +19,7 @@
                 <a href="inventory.php" class="clear-cart-button">Inventory List</a>
             </div>
             <div class="continue-shopping">
-                <a href="order_fulfillment.php" class="continue-shopping-button">Order Fulfillment</a>
+                <a href="fulfillment.php" class="continue-shopping-button">Order Fulfillment</a>
             </div>
         </div>
     </body>

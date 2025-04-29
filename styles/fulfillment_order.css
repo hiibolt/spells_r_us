@@ -1,0 +1,148 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+.profile-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 30px;
+}
+.product-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.product-table th, .product-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
+.product-table th {
+    background-color: #f0f0f0;
+}
+.total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+    color: #333;
+}
+.order-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+.order-button-container button {
+    background-color: #5a6aff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.order-button-container button:hover {
+    background-color: #2138ff;
+    transform: translateY(-2px);
+}
+
+.order-img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: #5a6aff;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    margin-bottom: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #2138ff;
+}
+.customer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.customer-header p {
+    margin: 0;
+}
+
+.status {
+    font-weight: bold;
+}
+.status.pending {
+    color: #ffc107;
+}
+.status.processing {
+    color: #17a2b8;
+}
+.status.shipped {
+    color: #28a745;
+}
+.status.cancelled {
+    color: #dc3545;
+}
+@media (max-width: 768px) {
+    .order-button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+}
+
+.badge.pending {
+    background-color: #ffc107;
+}
+.badge.processing {
+    background-color: #17a2b8;
+}
+.badge.shipped {
+    background-color: #28a745;
+}
+.badge.cancelled {
+    background-color: #dc3545;
+}
