@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem; /* Space between elements */
-    margin-top: 1rem; /* Add some space above the inventory */
+    gap: 1rem;
+    margin-top: 1rem;
     padding: 1rem;
     background-color: white;
     border-radius: 10px;
@@ -17,10 +17,10 @@
 .product-inventory p {
     font-size: 1rem;
     color: #333;
-    margin: 0; /* Remove default margin */
+    margin: 0;
 }
 .product-inventory form {
-    display: inline; /* Make the form behave like a button */
+    display: inline;
 }
 .product-inventory .add-to-cart-button,
 .product-inventory .remove-from-cart-button {
@@ -32,7 +32,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease;
-    font-size: 1.2rem; /* Adjust button size */
+    font-size: 1.2rem;
 }
 .product-inventory .add-to-cart-button:hover,
 .product-inventory .remove-from-cart-button:hover {
