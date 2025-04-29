@@ -7,13 +7,10 @@
     <link rel="stylesheet" href="styles/checkout.css">
 </head>
 <body> 
-
 <?php session_start(); 
 require 'db.php';
 require 'header.php';
 
-
-// check if user is logged in
 $userId = $_SESSION['userId'] ?? null;
 
 if (!$userId) {
@@ -21,7 +18,6 @@ if (!$userId) {
     exit;
 }
 
-// get cart items for this user
 $sql = '
 SELECT p.Name, p.Price, p.ImageUrl, puc.Quantity
 FROM ProductInUserCart puc
@@ -32,23 +28,20 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([':userId' => $userId]);
 $cartItems = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 if(empty($cartItems)) 
 {
     echo"<p>Your cart is empty. Please add items before checking out </p>";
     exit();
 }
 
-//calculating cart total 
     $total = 0; 
     foreach($cartItems as $item){
         $total+=$item['Price'] * $item['Quantity']; 
     }
 ?>
 
-
 <?php
-// valid forms 
+
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $shippingName = $_POST['shippingName'] ?? '';
@@ -128,14 +121,10 @@ if(empty($cartItems))
         }
     }
 ?>
-
     <h1>Checkout</h1>
-
     <form method="POST" action="">
 
-    <!-- cart summary-->
     <h2>Your Cart</h2>
-
     <?php if(!empty($cartItems)): ?> 
 
         <ul>
@@ -151,7 +140,6 @@ if(empty($cartItems))
         <p>Your cart is empty.</p>
     <?php endif; ?>
     
-    <!-- shipping form -->  
 
     <label for ="shippingName">Full Name:</label><br>
     <input type ="text" id="shippingName" name="shippingName" required><br><br>
@@ -169,8 +157,6 @@ if(empty($cartItems))
     <input type="text" id="shippingZip" name="shippingZip" required><br><br> 
 
 
-
-    <!-- billing form -->
     <h2>Billing Information</h2>
 
     <label for="cardNum">Card Number:</label><br>
@@ -185,7 +171,6 @@ if(empty($cartItems))
     <label for="cardName">Name on Card:</label><br>
     <input type="text" id="cardName" name="cardName" required><br><br> 
     
-    <!-- submit button--> 
     <input type="submit" value="Place Order">
     </form>
     </body>
