@@ -62,6 +62,7 @@
                     <span class="status"><?php echo $order['Status']; ?></span>
                 </div>
                 <p class="notes">Notes: <?php echo $order['Notes']; ?></p>
+                <p class="shipping-address">Shipping Address: <?php echo $order['ShippingAddress']; ?></p>
                 <p class="total-price">Total Price: $<?php echo number_format($order['TotalPrice'], 2); ?></p>
                 <div profile-container>
                     <h3>Products:</h3>

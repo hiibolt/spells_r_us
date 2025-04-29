@@ -86,7 +86,7 @@ INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice) VALUES
 (3, 'Processing', 'Leave at the front door.', '1245 Stadium Dr S, DeKalb, IL 60115', 164.97);
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice) VALUES
-(4, 'Cancled', 'Cancled by customer.', '1245 Stadium Dr S, DeKalb, IL 60115', 29.99);
+(4, 'cancelled', 'Cancelled by customer.', '1245 Stadium Dr S, DeKalb, IL 60115', 29.99);
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice) VALUES
 (5, 'Shipped', 'Awaiting confirmation.', '1245 Stadium Dr S, DeKalb, IL 60115', 399.98);
