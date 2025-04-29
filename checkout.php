@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/checkout.css">
+</head>
+<body> 
+
 <?php session_start(); 
 require 'db.php';
 require 'header.php';
@@ -34,8 +44,10 @@ if(empty($cartItems))
     foreach($cartItems as $item){
         $total+=$item['Price'] * $item['Quantity']; 
     }
+?>
 
 
+<?php
 // valid forms 
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -65,22 +77,15 @@ if(empty($cartItems))
             <p>' . htmlspecialchars($shippingAddress) . '</p>
             <p>Total Amount Charged: <strong>$' . number_format($total,2) . '</strong></p>
             <a class="continue-shopping-btn" href="index.php"> Continue Shopping</a>
-            </div>';
+            </div>
+            </body>
+            </html>';
             
             exit(); 
         }
         
     }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Checkout</title>
-    <link rel="stylesheet" href="styles/header.css">
-</head>
-<body> 
 
     <h1>Checkout</h1>
 
