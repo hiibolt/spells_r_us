@@ -1,8 +1,9 @@
 <?php session_start(); 
 require 'db.php';
+require 'header.php';
 
 
-// Check if user is logged in
+// check if user is logged in
 $userId = $_SESSION['userId'] ?? null;
 
 if (!$userId) {
@@ -10,7 +11,7 @@ if (!$userId) {
     exit;
 }
 
-// Get cart items for this user
+// get cart items for this user
 $sql = '
 SELECT p.Name, p.Price, p.ImageUrl, puc.Quantity
 FROM ProductInUserCart puc
@@ -31,7 +32,7 @@ if(empty($cartItems))
 //calculating cart total 
     $total = 0; 
     foreach($cartItems as $item){
-        $total+=$item['price'] * $item['Quantity']; 
+        $total+=$item['Price'] * $item['Quantity']; 
     }
 
 
@@ -55,12 +56,17 @@ if(empty($cartItems))
             echo "<p style='color: red;'>Fill out all required fields. </p>"; 
         }
         else
-        {
-            echo"<h2>Thank you for shopping with Spells R Us!</h2>";
-            echo"<p> Your order has been placed and will be shipped to: </p>";
-            echo"<p>$shippingAddress</p>";
-            echo"<p>Total Amount Charged: <strong>$$total</strong></p>";
+        {   
             $_SESSION['cart'] = []; 
+            
+            echo '<div class="thank-you-container">
+            <h2>Thank you for shopping with Spells R Us!</h2>
+            <p> Your order has been placed and will be shipped to: </p>
+            <p>' . htmlspecialchars($shippingAddress) . '</p>
+            <p>Total Amount Charged: <strong>$' . number_format($total,2) . '</strong></p>
+            <a class="continue-shopping-btn" href="index.php"> Continue Shopping</a>
+            </div>';
+            
             exit(); 
         }
         
@@ -72,7 +78,7 @@ if(empty($cartItems))
 <head>
     <meta charset="UTF-8">
     <title>Checkout</title>
-    <link rel="stylesheet" href="styles/checkout.css">
+    <link rel="stylesheet" href="styles/header.css">
 </head>
 <body> 
 
