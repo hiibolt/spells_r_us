@@ -15,10 +15,6 @@
     <body>
         <div class="employee-container">
             <h1 style="text-align:center;padding-bottom:1.5rem;">Employee Panel</h1>
-
-            <div class="continue-shopping">
-                <a href="inventory.php" class="clear-cart-button">Inventory List</a>
-            </div>
             <div class="continue-shopping">
                 <a href="order_fulfillment.php" class="continue-shopping-button">Order Fulfillment</a>
             </div>
