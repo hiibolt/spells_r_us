@@ -19,7 +19,7 @@ if (!$userId) {
 }
 
 $sql = '
-SELECT p.Name, p.Price, p.ImageUrl, puc.Quantity
+SELECT p.ProductId, p.Name, p.Price, p.ImageUrl, puc.Quantity
 FROM ProductInUserCart puc
 JOIN Product p ON puc.ProductId = p.ProductId
 WHERE puc.UserId = :userId
@@ -53,6 +53,7 @@ if(empty($cartItems))
         $cardExp = $_POST['cardExp'] ?? '';
         $cardCvv = $_POST['cardCvv'] ?? '';
         $cardName = $_POST['cardName'] ?? '';
+        $notes = $_POST['Notes'] ?? '';
 
         $errors = [];
 
@@ -95,7 +96,7 @@ if(empty($cartItems))
                     $stmt->execute([
                         ':userId' => $userId,
                         ':status' => 'Processing',
-                        ':notes' => 'No special notes',
+                        ':notes' => $notes,
                         ':total' => $total,
                         ':address' => $fullShippingAddress
                     ]);
@@ -108,7 +109,20 @@ if(empty($cartItems))
             $stmt->execute([':userId' => $userId]);
 
             # Add code to insert ProductPartOfOrder
-
+            
+            foreach ($cartItems as $item) {
+                $sql = '
+                    INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity)
+                    VALUES (:orderId, :productId, :quantity)
+                ';
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    ':orderId' => $orderId,
+                    ':productId' => $item['ProductId'],
+                    ':quantity' => $item['Quantity']
+                ]);
+            }
+            
         
             echo '<div class="thank-you-container">
             <h2>Thank you for shopping with Spells R Us!</h2>
@@ -133,6 +147,7 @@ if(empty($cartItems))
         <ul>
         <?php foreach($cartItems as $item): ?>    
             <li>
+                <?php echo (int)$item['Quantity']; ?>x - 
                 <?php echo htmlspecialchars($item['Name']); ?>
                 - $<?php echo number_format($item['Price'], 2); ?>
             </li>
@@ -174,6 +189,10 @@ if(empty($cartItems))
     <label for="cardName">Name on Card:</label><br>
     <input type="text" id="cardName" name="cardName" required><br><br> 
     
+    <label for="Notes">Notes (optional):</label><br>
+    <input type="text" id="Notes" name="Notes"><br><br>
+
+
     <input type="submit" value="Place Order">
     </form>
     </body>
