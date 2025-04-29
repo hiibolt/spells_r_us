@@ -1,0 +1,41 @@
+.product-inventory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Space between elements */
+    margin-top: 1rem; /* Add some space above the inventory */
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.product-inventory:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+.product-inventory p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0; /* Remove default margin */
+}
+.product-inventory form {
+    display: inline; /* Make the form behave like a button */
+}
+.product-inventory .add-to-cart-button,
+.product-inventory .remove-from-cart-button {
+    background-color: #fff648;
+    color: #000;
+    border: none;
+    padding: 0.6rem 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 1.2rem; /* Adjust button size */
+}
+.product-inventory .add-to-cart-button:hover,
+.product-inventory .remove-from-cart-button:hover {
+    background-color: #00a651;
+    color: white;
+}

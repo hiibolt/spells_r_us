@@ -1,21 +1,21 @@
 <?php
-require 'db.php';
+	require 'db.php';
 
-function isLoggedIn() {
-    return isset($_SESSION['user']);
-}
+	function isLoggedIn() {
+		return isset($_SESSION['user']);
+	}
 
-function isEmployee() {
-    return isset($_SESSION['isEmployee']) && $_SESSION['isEmployee'] == 1;
-}
+	function isEmployee() {
+		return isset($_SESSION['isEmployee']) && $_SESSION['isEmployee'] == 1;
+	}
 
-$userId = $_SESSION['userId'];
+	$userId = $_SESSION['userId'];
 
-$stmt = $pdo->prepare("SELECT COALESCE(SUM(Quantity), 0) AS CartItemCount FROM ProductInUserCart WHERE UserId = ?;");
-$stmt->execute([$userId]);
-$cartItemCount = $stmt->fetchColumn();
-
+	$stmt = $pdo->prepare("SELECT COALESCE(SUM(Quantity), 0) AS CartItemCount FROM ProductInUserCart WHERE UserId = ?;");
+	$stmt->execute([$userId]);
+	$cartItemCount = $stmt->fetchColumn();
 ?>
+
 <header class="header">
     <div class="logo">
         <a href="index.php">
