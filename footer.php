@@ -62,7 +62,7 @@
         <div class="authors">
             <ul>
                 <li><a href="https://github.com/hiibolt" target="_blank">John W - @hiibolt</a></li>
-                <li><a href="https://github.com/codins" target="_blank">Shavil P - @codins</a></li>
+                <li><a href="https://github.com/shaivilp" target="_blank">Shavil P - @shaivilp</a></li>
                 <li><a href="https://github.com/reybozo" target="_blank">Alex R - @reybozo</a></li>
                 <li><a href="https://github.com/ibarra617" target="_blank">Antonio I - @ibarra617</a></li>
             </ul>
