@@ -1,11 +1,9 @@
-
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9; 
     color: #333;
 }
-
 
 header {
     background-color: #0054a6;
@@ -15,7 +13,6 @@ header {
     font-size: 2rem;
     font-weight: bold;
 }
-
 
 .cart-container {
     display: grid;

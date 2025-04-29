@@ -2,13 +2,11 @@
 session_start();
 require 'db.php';
 
-
 $userId = $_SESSION['userId'] ?? null;
 if (!$userId) {
-    echo "<p>Please log in to view your cart.</p>";
+    header('Location: login.php');
     exit;
 }
-
 
 $cartCleared = false;
 
