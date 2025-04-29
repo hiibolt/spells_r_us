@@ -15,26 +15,16 @@
     }
 
     if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
-        if ( isset($_POST['increment_inv']) ) {
+        if (isset($_POST['set_inventory'])) {
             $productId = $_POST['product_id'];
-            $sql = 'UPDATE Product SET Inventory = Inventory + 1 WHERE ProductId = :productId';
+            $newInventory = max(0, intval($_POST['new_inventory']));
+        
+            $sql = 'UPDATE Product SET Inventory = :newInventory WHERE ProductId = :productId';
             $stmt = $pdo->prepare($sql);
-            $stmt->execute(['productId' => $productId]);
-        } elseif ( isset($_POST['decrement_inv']) ) {
-            # Check if inventory is greater than 0 before decrementing
-            $sql = 'SELECT Inventory FROM Product WHERE ProductId = :productId';
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(['productId' => $_POST['product_id']]);
-            $inventory = $stmt->fetchColumn();
-            if ($inventory <= 0) {
-                echo "<p>Cannot decrement inventory below 0.</p>";
-                exit;
-            }
-
-            $productId = $_POST['product_id'];
-            $sql = 'UPDATE Product SET Inventory = Inventory - 1 WHERE ProductId = :productId';
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(['productId' => $productId]);
+            $stmt->execute([
+                'newInventory' => $newInventory,
+                'productId' => $productId
+            ]);
         }
     }
 
@@ -73,18 +63,12 @@
                         <div class="product-description"><?= htmlspecialchars($product['Description']) ?></div>
 
                         <div class="product-inventory">
-                            <p>
-                                Inventory: <?= htmlspecialchars($product['Inventory']) ?>
-                            </p>
-                            <!-- Increment inventory button -->
-                            <form method="POST" action="inventory.php">
+                            <p>Inventory: <?= htmlspecialchars($product['Inventory']) ?></p>
+                            
+                            <form method="POST" action="inventory.php" style="display: flex; gap: 0.5rem; align-items: center;">
                                 <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ProductId']) ?>">
-                                <button type="submit" name="increment_inv" class="add-to-cart-button">+</button>
-                            </form>
-                            <!-- Decrement inventory button -->
-                            <form method="POST" action="inventory.php">
-                                <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ProductId']) ?>">
-                                <button type="submit" name="decrement_inv" class="remove-from-cart-button">-</button>
+                                <input type="number" name="new_inventory" min="0" value="<?= htmlspecialchars($product['Inventory']) ?>" style="width: 60px;">
+                                <button type="submit" name="set_inventory" class="set-inventory-button">Update</button>
                             </form>
                         </div>
                     </div>
