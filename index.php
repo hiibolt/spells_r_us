@@ -71,7 +71,7 @@ if ( $success ) {
 
                         <?php if ( $product['Inventory'] <= 0 ): ?>
                             <div class="product-out-of-stock">Out of Stock</div>
-                        <?php else: ?>
+                        <?php elseif ( $userId ): ?>
                             <form method="POST">
                                 <input type="hidden" name="product_id" value="<?= $product['ProductId'] ?>">
                                 <button type="submit" name="add_to_cart">Add to Cart</button>
