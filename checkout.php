@@ -122,8 +122,20 @@ if(empty($cartItems))
                     ':quantity' => $item['Quantity']
                 ]);
             }
+
+            # Add code to insert UserPlacesOrder
+            $sql = '
+                INSERT INTO UserPlacesOrder (UserId, OrderId)
+                VALUES (:userId, :orderId)
+            ';
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                ':userId' => $userId,
+                ':orderId' => $orderId
+            ]);
+
             
-        
             echo '<div class="thank-you-container">
             <h2>Thank you for shopping with Spells R Us!</h2>
             <p> Your order has been placed and will be shipped to: </p>
