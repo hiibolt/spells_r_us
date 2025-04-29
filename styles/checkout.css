@@ -1,4 +1,7 @@
-
+html {
+    position: relative;
+    min-height: 100%;
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f2f2f2;

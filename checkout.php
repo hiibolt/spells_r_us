@@ -176,5 +176,8 @@ if(empty($cartItems))
     <input type="submit" value="Place Order">
     </form>
     </body>
+    <?php
+        require 'footer.php';
+    ?>
 </html>
 

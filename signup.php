@@ -38,33 +38,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/signup.css">
-</head>
-<body>
-    <div class="signup-container">
-        <h1>Sign Up</h1>
-        <form method="post" class="signup-form">
-            <label for="signup_email">Email:</label>
-            <input id="signup_email" name="signup_email" type="email" required>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sign Up</title>
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/signup.css">
+    </head>
+    <body>
+        <div class="signup-container">
+            <h1>Sign Up</h1>
+            <form method="post" class="signup-form">
+                <label for="signup_email">Email:</label>
+                <input id="signup_email" name="signup_email" type="email" required>
 
-            <label for="signup_password">Password (minimum 8 characters):</label>
-            <input id="signup_password" name="signup_password" type="password" required>
+                <label for="signup_password">Password (minimum 8 characters):</label>
+                <input id="signup_password" name="signup_password" type="password" required>
 
-            <label for="signup_confirm_password">Confirm Password:</label>
-            <input id="signup_confirm_password" name="signup_confirm_password" type="password" required>
+                <label for="signup_confirm_password">Confirm Password:</label>
+                <input id="signup_confirm_password" name="signup_confirm_password" type="password" required>
 
-            <button type="submit">Sign Up</button>
-        </form>
+                <button type="submit">Sign Up</button>
+            </form>
 
-        <?php if ($error): ?>
-            <p class="signup-alert"><?= htmlspecialchars($error) ?></p>
-        <?php elseif ($success): ?>
-            <p style="color: green; text-align: center;"><?= $success ?></p>
-        <?php endif; ?>
-    </div>
-</body>
+            <?php if ($error): ?>
+                <p class="signup-alert"><?= htmlspecialchars($error) ?></p>
+            <?php elseif ($success): ?>
+                <p style="color: green; text-align: center;"><?= $success ?></p>
+            <?php endif; ?>
+        </div>
+    </body>
+    <?php
+        require 'footer.php';
+    ?>
 </html>

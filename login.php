@@ -26,26 +26,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/login.css">
-</head>
-<body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form method="post" class="login-form">
-            <label for="email">Email:</label>
-            <input id="email" name="email" required>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/login.css">
+    </head>
+    <body>
+        <div class="login-container">
+            <h1>Login</h1>
+            <form method="post" class="login-form">
+                <label for="email">Email:</label>
+                <input id="email" name="email" required>
 
-            <label for="password">Password:</label>
-            <input id="password" type="password" name="password" required>
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password" required>
 
-            <button type="submit">Login</button>
-        </form>
-        <?php if ($error): ?>
-            <p class="login-alert"><?= htmlspecialchars($error) ?></p>
-        <?php endif; ?>
-    </div>
-</body>
+                <button type="submit">Login</button>
+            </form>
+            <?php if ($error): ?>
+                <p class="login-alert"><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+        </div>
+    </body>
+    <?php
+        require 'footer.php';
+    ?>
 </html>

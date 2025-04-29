@@ -60,4 +60,7 @@ foreach ( $orders as $order ) {
             </div>
         </div>
     </body>
+    <?php
+        require 'footer.php';
+    ?>
 </html>
