@@ -70,3 +70,16 @@ header {
     background-color: #00a651;
     color: white;
 }
+
+.quantity-input {
+    width: 60px; /* Set width of the input field */
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center; /* Center the number text */
+    background-color: #fff; /* White background */
+    transition: border-color 0.2s ease;
+    margin-right: 1rem; /* Space between input and button */
+}
