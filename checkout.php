@@ -61,16 +61,45 @@ if(empty($cartItems))
         $cardCvv = $_POST['cardCvv'] ?? '';
         $cardName = $_POST['cardName'] ?? '';
 
+        $errors = [];
+
         if(empty($shippingName) || empty($shippingAddress) || empty($shippingCity) 
            || empty($shippingState) || empty($shippingZip) || empty($cardNum) || empty($cardName)
            || empty($cardExp) || empty($cardCvv)) 
         {
-            echo "<p style='color: red;'>Fill out all required fields. </p>"; 
+            $errors[] = "<p style='color: red;'>Fill out all required fields. </p>"; 
         }
+
+        $cardNum = preg_replace('/[\s-]/', '', $cardNum);
+        $cardExp = trim($cardExp);
+
+        if (!preg_match('/^\d{5}$/', $shippingZip)) {
+            $errors[] = "Please enter a valid 5-digit ZIP code.";
+        }
+        if (!preg_match('/^\d{16}$/', $cardNum)) {
+            $errors[] = "Please enter a valid 16-digit credit card number.";
+        }
+        if (!preg_match('/^(0[1-9]|1[0-2])\/\d{2}$/', $cardExp)) {
+            $errors[] = "Please enter a valid expiration date (MM/YY).";
+        }
+        if (!preg_match('/^\d{3,4}$/', $cardCvv)) {
+            $errors[] = "Please enter a valid 3 or 4-digit CVV.";
+        }
+    
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                echo "<p style='color:red;'>" . htmlspecialchars($error) . "</p>";
+            }
+        }
+
+
         else
         {   
             $_SESSION['cart'] = []; 
-            
+            $sql = 'DELETE FROM ProductInUserCart WHERE UserId = :userId';
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':userId' => $userId]);
+        
             echo '<div class="thank-you-container">
             <h2>Thank you for shopping with Spells R Us!</h2>
             <p> Your order has been placed and will be shipped to: </p>
@@ -94,13 +123,13 @@ if(empty($cartItems))
     <!-- cart summary-->
     <h2>Your Cart</h2>
 
-    <?php if(!empty($_SESSION['cart'])): ?> 
+    <?php if(!empty($cartItems)): ?> 
 
         <ul>
         <?php foreach($cartItems as $item): ?>    
             <li>
-                <?php echo htmlspecialchars($item['name']); ?>
-                - $<?php echo number_format($item['price'], 2); ?>
+                <?php echo htmlspecialchars($item['Name']); ?>
+                - $<?php echo number_format($item['Price'], 2); ?>
             </li>
             <?php endforeach; ?>
         </ul>

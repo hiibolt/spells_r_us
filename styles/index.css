@@ -72,14 +72,24 @@ header {
 }
 
 .quantity-input {
-    width: 60px; /* Set width of the input field */
+    width: 60px;
     padding: 0.5rem;
     font-size: 1rem;
     color: #333;
     border: 1px solid #ccc;
     border-radius: 5px;
-    text-align: center; /* Center the number text */
-    background-color: #fff; /* White background */
+    text-align: center;
+    background-color: #fff;
     transition: border-color 0.2s ease;
-    margin-right: 1rem; /* Space between input and button */
+    margin-right: 1rem;
+}
+
+.banner-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }

@@ -60,6 +60,10 @@ if ( $success ) {
                 ✅ Product added to cart!
             </div>
         <?php endif; ?>
+
+        <div class="banner-container">
+            <h2>Industry-Leading Spells From the Wisest of Wizards.</h2>
+        </div>
         
         <div class="product-grid">
             <?php foreach ( $products as $product ): ?>
