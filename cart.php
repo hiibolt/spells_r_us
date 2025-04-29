@@ -94,10 +94,9 @@ $hasOutOfStock = false;
     <?php if (empty($cartItems)): ?>
         <p style="text-align: center;">Your cart is empty.</p>
 
-        <div class="cart-actions">
-            <a href="index.php" class="action-button continue-shopping-button">Continue Shopping</a>
+        <div class="continue-shopping">
+            <a href="index.php" class="continue-shopping-button">Continue Shopping</a>
         </div>
-
     <?php else: ?>
         <div class="cart-container">
             <?php foreach ($cartItems as $item): ?>
@@ -156,9 +155,6 @@ $hasOutOfStock = false;
         <div class="continue-checkout">
             <a href="checkout.php" class="continue-checkout-button">Continue to Checkout</a>
         </div>
-
-        
-
     <?php endif; ?>
 </main>
 
