@@ -91,10 +91,24 @@ if(empty($cartItems))
                 echo "<p style='color:red;'>" . htmlspecialchars($error) . "</p>";
             }
         }
-
-
         else
         {   
+            $fullShippingAddress = $shippingAddress . ', ' . $shippingCity . ', ' . $shippingState . ' ' . $shippingZip;
+            $sql = '
+                    INSERT INTO `Order` (UserId, Status, Notes, TotalPrice, ShippingAddress)
+                    VALUES (:userId, :status, :notes, :total, :address)
+                    ';
+                    $stmt = $pdo->prepare($sql);
+                    $stmt->execute([
+                        ':userId' => $userId,
+                        ':status' => 'Processing',
+                        ':notes' => 'No special notes',
+                        ':total' => $total,
+                        ':address' => $fullShippingAddress
+                    ]);
+                    
+            $orderId = $pdo->lastInsertId();
+
             $_SESSION['cart'] = []; 
             $sql = 'DELETE FROM ProductInUserCart WHERE UserId = :userId';
             $stmt = $pdo->prepare($sql);
@@ -112,7 +126,6 @@ if(empty($cartItems))
             
             exit(); 
         }
-        
     }
 ?>
 
