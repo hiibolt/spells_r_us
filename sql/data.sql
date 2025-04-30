@@ -80,16 +80,16 @@ INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, Ordered
 (1, 'Shipped', 'Deliver to the office.', '1245 Stadium Dr S, DeKalb, IL 60115', 99.98, '2024-12-01 10:00:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
-(2, 'Processing', 'Handle with care.', '1245 Stadium Dr S, DeKalb, IL 60115', 59.99, '2025-01-15 14:23:00');
+(2, 'Pending', 'Handle with care.', '1245 Stadium Dr S, DeKalb, IL 60115', 59.99, '2025-01-15 14:23:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
-(3, 'Processing', 'Leave at the front door.', '1245 Stadium Dr S, DeKalb, IL 60115', 164.97, '2025-02-10 09:42:00');
+(3, 'Pending', 'Leave at the front door.', '1245 Stadium Dr S, DeKalb, IL 60115', 164.97, '2025-02-10 09:42:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
 (4, 'Cancelled', 'Cancelled by customer.', '1245 Stadium Dr S, DeKalb, IL 60115', 29.99, '2025-03-01 17:00:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
-(5, 'Shipped', 'Awaiting confirmation.', '1245 Stadium Dr S, DeKalb, IL 60115', 399.98, '2025-04-05 08:15:00');
+(5, 'Processing', 'Awaiting confirmation.', '1245 Stadium Dr S, DeKalb, IL 60115', 399.98, '2025-04-05 08:15:00');
 
 -- Inser the products into the UserPlacesOrder table
 INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity) VALUES

@@ -25,7 +25,7 @@ CREATE TABLE Product (
 CREATE TABLE `Order` (
     OrderId INT PRIMARY KEY AUTO_INCREMENT,
     UserId INT NOT NULL,
-    Status VARCHAR(50) NOT NULL DEFAULT 'Processing',
+    Status VARCHAR(50) NOT NULL DEFAULT 'Pending',
     Notes VARCHAR(255) NOT NULL,
     TotalPrice DECIMAL(10, 2) NOT NULL,
     ShippedAt DATETIME DEFAULT NULL,
