@@ -63,11 +63,11 @@
                         <div class="product-description"><?= htmlspecialchars($product['Description']) ?></div>
 
                         <div class="product-inventory">
-                            <p>Inventory: <?= htmlspecialchars($product['Inventory']) ?></p>
+                            <p style="margin-left:10px;">Stock: <?= htmlspecialchars($product['Inventory']) ?></p>
                             
-                            <form method="POST" action="inventory.php" style="display: flex; gap: 0.5rem; align-items: center;">
+                            <form method="POST" action="inventory.php" style="display:flex;justify-content:space-between;align-items:center;">
                                 <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['ProductId']) ?>">
-                                <input type="number" name="new_inventory" min="0" value="<?= htmlspecialchars($product['Inventory']) ?>" style="width: 60px;">
+                                <input type="number" name="new_inventory" style="width:40px;" min="0" value="<?= htmlspecialchars($product['Inventory']) ?>" class="quantity-input">
                                 <button type="submit" name="set_inventory" class="set-inventory-button">Update</button>
                             </form>
                         </div>
