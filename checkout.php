@@ -1,3 +1,9 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +47,6 @@ if(empty($cartItems))
 ?>
 
 <?php
-
     if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $shippingName = $_POST['shippingName'] ?? '';
@@ -84,9 +89,7 @@ if(empty($cartItems))
             foreach ($errors as $error) {
                 echo "<p style='color:red;'>" . htmlspecialchars($error) . "</p>";
             }
-        }
-        else
-        {   
+        } else {   
             $fullShippingAddress = $shippingAddress . ', ' . $shippingCity . ', ' . $shippingState . ' ' . $shippingZip;
             $sql = '
                     INSERT INTO `Order` (UserId, Status, Notes, TotalPrice, ShippingAddress)
@@ -95,7 +98,7 @@ if(empty($cartItems))
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute([
                         ':userId' => $userId,
-                        ':status' => 'Processing',
+                        ':status' => 'Pending',
                         ':notes' => $notes,
                         ':total' => $total,
                         ':address' => $fullShippingAddress
@@ -109,7 +112,6 @@ if(empty($cartItems))
             $stmt->execute([':userId' => $userId]);
 
             # Add code to insert ProductPartOfOrder
-            
             foreach ($cartItems as $item) {
                 $sql = '
                     INSERT INTO ProductPartOfOrder (OrderId, ProductId, Quantity)
@@ -122,20 +124,25 @@ if(empty($cartItems))
                     ':quantity' => $item['Quantity']
                 ]);
             }
+            
+            # Update product quantity in Product table
+            foreach($cartItems as $item) {
+                $sql = 'UPDATE Product SET Inventory = Inventory - :quantity WHERE ProductId = :productId';
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([
+                    ':quantity' => $item['Quantity'],
+                    ':productId' => $item['ProductId']
+                ]);
+            }
 
             # Add code to insert UserPlacesOrder
-            $sql = '
-                INSERT INTO UserPlacesOrder (UserId, OrderId)
-                VALUES (:userId, :orderId)
-            ';
-
+            $sql = ' INSERT INTO UserPlacesOrder (UserId, OrderId) VALUES (:userId, :orderId)';
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 ':userId' => $userId,
                 ':orderId' => $orderId
             ]);
 
-            
             echo '<div class="thank-you-container">
             <h2>Thank you for shopping with Spells R Us!</h2>
             <p> Your order has been placed and will be shipped to: </p>
@@ -145,7 +152,6 @@ if(empty($cartItems))
             </div>
             </body>
             </html>';
-            
             exit(); 
         }
     }
