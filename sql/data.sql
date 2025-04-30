@@ -76,14 +76,14 @@ INSERT INTO User (Email, Password, IsEmployee) VALUES
 ('sarahjones123@niu.edu', 'VerySecurePassword!!!', FALSE);
 
 -- Insert atleast 1 order per user into the Order table
-INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
-(1, 'Shipped', 'Deliver to the office.', '1245 Stadium Dr S, DeKalb, IL 60115', 99.98, '2024-12-01 10:00:00');
+INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt, ShippedAt) VALUES
+(1, 'Shipped', 'Deliver to the office.', '1245 Stadium Dr S, DeKalb, IL 60115', 99.98, '2024-12-01 10:00:00', '2024-12-05 15:00:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
 (2, 'Pending', 'Handle with care.', '1245 Stadium Dr S, DeKalb, IL 60115', 59.99, '2025-01-15 14:23:00');
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
-(3, 'Pending', 'Leave at the front door.', '1245 Stadium Dr S, DeKalb, IL 60115', 164.97, '2025-02-10 09:42:00');
+(3, 'Pending', 'Leave at the front door.', '1245 Stadium Dr S, DeKalb, IL 60115', 164.97, '2025-02-10 09:42:00');    
 
 INSERT INTO `Order` (UserId, Status, Notes, ShippingAddress, TotalPrice, OrderedAt) VALUES
 (4, 'Cancelled', 'Cancelled by customer.', '1245 Stadium Dr S, DeKalb, IL 60115', 29.99, '2025-03-01 17:00:00');
