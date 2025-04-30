@@ -19,6 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'], $_POST['n
         ':newStatus' => $_POST['new_status'],
         ':orderId' => $_POST['order_id']
     ]);
+
+    # if status is shipped, update the shipping date
+    if ($_POST['new_status'] === 'Shipped') {
+        $sql = "UPDATE `Order` SET ShippedAt = NOW() WHERE OrderId = :orderId";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':orderId' => $_POST['order_id']]);
+    }
+
     header("Location: fulfillment.php");
     exit;
 }

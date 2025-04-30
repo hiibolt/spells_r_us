@@ -63,6 +63,9 @@
                 </div>
                 <p class="notes">Notes: <?php echo $order['Notes']; ?></p>
                 <p class="shipping-address">Shipping Address: <?php echo $order['ShippingAddress']; ?></p>
+                <?php if ( $order['Status'] == 'Shipped' ): ?>
+                    <p class="shipping-date">Shipped At: <?php echo $order['ShippedAt']; ?></p>
+                <?php endif; ?>
                 <p class="total-price">Total Price: $<?php echo number_format($order['TotalPrice'], 2); ?></p>
                 <div profile-container>
                     <h3>Products:</h3>
